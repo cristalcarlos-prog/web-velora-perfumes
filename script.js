@@ -4,8 +4,8 @@ const config = {
   whatsapp: "5491160468912",
   // Mensaje al consultar por WhatsApp (botones generales)
   whatsappMessage: "Hola Velora Perfumes, quiero consultar por el catálogo de perfumes.",
-  // Cuántos perfumes se muestran por vez en el catálogo
-  porPagina: 48
+  // Cuántas FILAS de perfumes se muestran por vez en el catálogo (el botón "Ver más" suma otras tantas)
+  filasPorVez: 10
 };
 
 // ---------- Utilidades ----------
@@ -158,7 +158,7 @@ document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeCart(
 
 // ---------- Catálogo ----------
 const grid = $("grilla");
-const state = { q: "", genero: "", ml: "", marca: "", shown: config.porPagina };
+const state = { q: "", genero: "", ml: "", marca: "", rows: config.filasPorVez };
 
 // Marcas para el selector
 Array.from(new Set(PRODUCTOS.map((p) => p.marca)))
@@ -240,19 +240,26 @@ function makeCard(p) {
   return card;
 }
 
+function cols() {
+  const t = getComputedStyle(grid).gridTemplateColumns;
+  return Math.max(1, t.split(" ").filter(Boolean).length);
+}
+let lastCols = 0;
 function renderGrid() {
   const list = filtered();
+  lastCols = cols();
+  const shown = state.rows * lastCols;
   grid.textContent = "";
   const frag = document.createDocumentFragment();
-  list.slice(0, state.shown).forEach((p) => frag.appendChild(makeCard(p)));
+  list.slice(0, shown).forEach((p) => frag.appendChild(makeCard(p)));
   grid.appendChild(frag);
   $("vacio").hidden = list.length > 0;
-  $("verMas").hidden = list.length <= state.shown;
+  $("verMas").hidden = list.length <= shown;
   $("resultados").textContent = list.length
-    ? "Mostrando " + Math.min(state.shown, list.length) + " de " + list.length + " perfumes"
+    ? "Mostrando " + Math.min(shown, list.length) + " de " + list.length + " perfumes"
     : "";
 }
-function resetAndRender() { state.shown = config.porPagina; renderGrid(); }
+function resetAndRender() { state.rows = config.filasPorVez; renderGrid(); }
 
 let searchTimer;
 $("buscar").addEventListener("input", (e) => {
@@ -272,7 +279,13 @@ function bindChips(containerId, key, attr) {
 }
 bindChips("chipsGenero", "genero", "genero");
 bindChips("chipsMl", "ml", "ml");
-$("verMas").addEventListener("click", () => { state.shown += config.porPagina; renderGrid(); });
+$("verMas").addEventListener("click", () => { state.rows += config.filasPorVez; renderGrid(); });
+
+let resizeTimer;
+window.addEventListener("resize", () => {
+  clearTimeout(resizeTimer);
+  resizeTimer = setTimeout(() => { if (cols() !== lastCols) renderGrid(); }, 200);
+});
 
 renderCart();
 renderGrid();

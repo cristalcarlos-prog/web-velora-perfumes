@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Venta de perfumes y fragancias importadas de diseñadores internacionales. Catálogo disponible y pedidos por WhatsApp con envíos.">
+<link rel="icon" href="imagenes/logo.png">
+<meta name="theme-color" content="#0b1013">
+<title>Velora Perfumes | Catálogo de fragancias importadas</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container nav-wrap">
+    <a class="brand" href="#inicio" aria-label="Ir al inicio">
+      <img class="brand-logo" src="imagenes/logo.png" alt="Velora Perfumes">
+      <span class="brand-name">Velora Perfumes</span>
+    </a>
+    <nav class="main-nav" id="mainNav">
+      <a href="#inicio">Inicio</a>
+      <a href="#catalogo">Catálogo</a>
+      <a href="#como-comprar">Cómo comprar</a>
+      <a href="#faq">Preguntas</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="cart-btn" id="openCart" type="button" aria-label="Ver mi pedido">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+        <span class="cart-count" id="cartCount">0</span>
+      </button>
+      <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="hero section" id="inicio">
+    <div class="container hero-grid">
+      <div class="hero-copy">
+        <p class="eyebrow">FRAGANCIAS IMPORTADAS</p>
+        <h1>Encontrá tu fragancia ideal</h1>
+        <p class="hero-text">Ofrecemos perfumes importados originales de los mejores diseñadores internacionales. Elegí tus favoritos en el catálogo, armá tu pedido y finalizalo por WhatsApp. Realizamos envíos directo a tu puerta.</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#catalogo">Ver catálogo</a>
+          <a class="button button-secondary" data-whatsapp href="#" target="_blank" rel="noopener">Hablar por WhatsApp</a>
+        </div>
+        <p class="small-note">Atención personalizada · Respuesta rápida · Envíos a domicilio</p>
+      </div>
+      <div class="hero-visual">
+        <img src="imagenes/portada.jpg" alt="Perfumes de Velora Perfumes">
+        <div class="visual-caption"><strong>Fragancias exclusivas</strong><span>Perfumes importados originales de los mejores diseñadores</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-soft" id="empresa">
+    <div class="container about-grid">
+      <div class="about-accent">
+        <span class="about-big">Fragancias que dejan huella</span>
+        <span class="about-label">SOBRE NOSOTROS</span>
+      </div>
+      <div class="about-copy">
+        <p class="eyebrow">QUIÉNES SOMOS</p>
+        <h2>Tu espacio de perfumería internacional</h2>
+        <p>En Velora Perfumes nos especializamos en acercarte fragancias internacionales selladas y de los mejores diseñadores del mercado, brindándote una atención personalizada.</p>
+        <ul class="check-list">
+          <li>Fragancias originales y selladas</li>
+          <li>Atención personalizada</li>
+          <li>Envíos a tu puerta</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="catalogo">
+    <div class="container">
+      <div class="section-heading">
+        <p class="eyebrow">CATÁLOGO</p>
+        <h2>Nuestras fragancias</h2>
+        <p>Buscá, filtrá y agregá tus perfumes al pedido. Los precios te los pasamos por WhatsApp una vez enviado el pedido.</p>
+      </div>
+
+      <div class="toolbar">
+        <input class="search" id="buscar" type="search" placeholder="Buscar perfume o marca…" aria-label="Buscar perfume o marca" autocomplete="off">
+        <select id="marca" aria-label="Filtrar por marca"><option value="">Todas las marcas</option></select>
+      </div>
+      <div class="chips" id="chipsGenero" role="group" aria-label="Filtrar por género">
+        <button class="chip active" type="button" data-genero="">Todos</button>
+        <button class="chip" type="button" data-genero="hombre">Hombre</button>
+        <button class="chip" type="button" data-genero="mujer">Mujer</button>
+        <button class="chip" type="button" data-genero="unisex">Unisex</button>
+      </div>
+      <div class="chips" id="chipsMl" role="group" aria-label="Filtrar por tamaño">
+        <button class="chip active" type="button" data-ml="">Todos los tamaños</button>
+        <button class="chip" type="button" data-ml="30">30 ml</button>
+        <button class="chip" type="button" data-ml="50">50 ml</button>
+        <button class="chip" type="button" data-ml="80">75–85 ml</button>
+        <button class="chip" type="button" data-ml="100">90–125 ml</button>
+      </div>
+
+      <p class="results-info" id="resultados" aria-live="polite"></p>
+      <div class="product-grid" id="grilla"></div>
+      <div class="more-wrap"><button class="button button-secondary" id="verMas" type="button" hidden>Ver más perfumes</button></div>
+      <p class="empty" id="vacio" hidden>No encontramos perfumes con esa búsqueda. Probá con otro nombre o escribinos por WhatsApp y te ayudamos.</p>
+    </div>
+  </section>
+
+  <section class="section section-soft" id="destacados">
+    <div class="container">
+      <div class="section-heading">
+        <p class="eyebrow">RECOMENDADOS</p>
+        <h2>¿No sabés cuál elegir?</h2>
+        <p>Una selección de estilos y aromas para inspirarte. Escribinos y te ayudamos a encontrar tu perfume ideal.</p>
+      </div>
+      <div class="gallery" id="galeria">
+        <div class="g-item"><img src="imagenes/destacado-1.jpg" alt="Selección de perfumes intensos y seductores para hombre" loading="lazy"></div>
+        <div class="g-item"><img src="imagenes/destacado-2.jpg" alt="Selección de perfumes frescos y acuáticos" loading="lazy"></div>
+        <div class="g-item"><img src="imagenes/destacado-3.jpg" alt="Selección de perfumes femeninos, elegantes y con carácter" loading="lazy"></div>
+        <div class="g-item"><img src="imagenes/destacado-4.jpg" alt="Selección de perfumes dulces, cremosos y femeninos" loading="lazy"></div>
+        <div class="g-item"><img src="imagenes/destacado-5.jpg" alt="Xerjoff Erba Pura y Ouverture" loading="lazy"></div>
+        <div class="g-item"><img src="imagenes/destacado-6.jpg" alt="Afnan 9PM Elixir" loading="lazy"></div>
+        <div class="g-item"><img src="imagenes/destacado-7.jpg" alt="Colección de fragancias Velora Perfumes" loading="lazy"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="como-comprar">
+    <div class="container">
+      <div class="section-heading">
+        <p class="eyebrow">CÓMO COMPRAR</p>
+        <h2>Comprar es simple</h2>
+        <p>Armás tu pedido en la web y lo cerramos juntos por WhatsApp.</p>
+      </div>
+      <div class="cards cards-steps">
+        <article class="service-card"><div class="card-icon">01</div><h3>Elegí tus perfumes</h3><p>Recorré el catálogo, filtrá por género, tamaño o marca y agregá tus favoritos al pedido.</p></article>
+        <article class="service-card"><div class="card-icon">02</div><h3>Enviá tu pedido</h3><p>Desde el pedido tocás “Enviar por WhatsApp” y se arma el mensaje con tu selección.</p></article>
+        <article class="service-card"><div class="card-icon">03</div><h3>Te pasamos precios y envío</h3><p>Te confirmamos disponibilidad, precios, formas de pago y el envío a tu domicilio.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-soft" id="faq">
+    <div class="container faq-wrap">
+      <div class="section-heading">
+        <p class="eyebrow">PREGUNTAS FRECUENTES</p>
+        <h2>Preguntas frecuentes</h2>
+      </div>
+      <div class="faq" id="faqlista">
+        <details><summary>¿Cómo hago un pedido?</summary><p>Agregá los perfumes que quieras al pedido y tocá “Enviar pedido por WhatsApp”. Te respondemos con la disponibilidad, los precios y cómo coordinar el pago y el envío.</p></details>
+        <details><summary>¿Cuánto cuestan los perfumes?</summary><p>Los precios se consultan por WhatsApp una vez enviado el pedido, así te pasamos el valor actualizado de cada fragancia.</p></details>
+        <details><summary>¿Los perfumes son originales?</summary><p>Sí, trabajamos exclusivamente con fragancias internacionales originales y selladas de los mejores diseñadores.</p></details>
+        <details><summary>¿Realizan envíos?</summary><p>Sí, hacemos envíos a domicilio. El costo y los tiempos te los confirmamos por WhatsApp al cerrar tu pedido.</p></details>
+        <details><summary>¿Puedo pedir un perfume que no está en el catálogo?</summary><p>Sí, escribinos y vemos si podemos conseguirlo por encargo.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact-section section" id="contacto">
+    <div class="container contact-grid single">
+      <div class="contact-copy">
+        <p class="eyebrow">HABLEMOS</p>
+        <h2>Escribinos y te asesoramos</h2>
+        <p>Estamos para ayudarte a elegir. Contanos qué aromas te gustan y te recomendamos opciones.</p>
+        <div class="contact-buttons">
+          <a class="button button-whatsapp" data-whatsapp href="#" target="_blank" rel="noopener">Escribir por WhatsApp</a>
+          <a class="button button-instagram" href="https://www.instagram.com/perfumes_velora26" target="_blank" rel="noopener">Seguinos en Instagram</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-wrap">
+    <a class="brand footer-brand" href="#inicio"><img class="brand-logo" src="imagenes/logo.png" alt="Velora Perfumes"><span class="brand-name">Velora Perfumes</span></a>
+    <p>© <span id="year"></span> Velora Perfumes. Todos los derechos reservados. Sitio desarrollado por <a href="https://ratiohyperion.com.ar" target="_blank" rel="noopener">Ratio Hyperion</a>.</p>
+    <a href="https://www.instagram.com/perfumes_velora26" target="_blank" rel="noopener">Instagram @perfumes_velora26</a>
+  </div>
+</footer>
+
+<!-- Pedido (carrito) -->
+<div class="cart-overlay" id="cartOverlay" hidden></div>
+<aside class="cart-panel" id="cartPanel" aria-label="Mi pedido" aria-hidden="true">
+  <div class="cart-head">
+    <h2>Mi pedido</h2>
+    <button class="cart-close" id="closeCart" type="button" aria-label="Cerrar pedido">✕</button>
+  </div>
+  <div class="cart-body" id="cartItems"></div>
+  <div class="cart-foot">
+    <p class="cart-note" id="cartNote">Los precios te los pasamos por WhatsApp una vez enviado el pedido.</p>
+    <p class="cart-total" id="cartTotal" hidden></p>
+    <a class="button button-whatsapp button-full" id="sendOrder" href="#" target="_blank" rel="noopener">Enviar pedido por WhatsApp</a>
+    <button class="link-btn" id="clearCart" type="button">Vaciar pedido</button>
+  </div>
+</aside>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<a class="floating-instagram" href="https://www.instagram.com/perfumes_velora26" target="_blank" rel="noopener" aria-label="Ver Instagram de Velora Perfumes">
+  <svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.2" cy="6.8" r="1.2" fill="currentColor"/></svg>
+</a>
+
+<a class="floating-whatsapp" data-whatsapp href="#" target="_blank" rel="noopener" aria-label="Contactar por WhatsApp">
+  <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.200zm4.5-6.1c-.2-.1-1.500-.7-1.700-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.200-.3.200-.5.100a6.700 6.700 0 0 1-3.300-2.900c-.2-.4.200-.4.700-1.300.1-.2 0-.3 0-.5l-.8-1.800c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.100-.7.300-.2.300-.9.900-.9 2.200s.9 2.500 1.100 2.700c.1.200 1.800 2.800 4.400 3.900 1.600.7 2.300.8 3.100.6.500-.1 1.500-.6 1.700-1.200.2-.6.2-1.100.2-1.200-.1-.1-.3-.2-.5-.3z"/></svg>
+</a>
+
+<script src="productos.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
