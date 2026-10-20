@@ -1,0 +1,34 @@
+GUÍA DE PUBLICACIÓN — Web de Velora Perfumes (catálogo + pedido por WhatsApp)
+=============================================================================
+
+CONTENIDO
+- index.html, style.css, script.js: la web.
+- productos.js: el catálogo (227 perfumes). Acá se cambian precios, stock y productos.
+- imagenes/: logo, portada, destacados y imagenes/catalogo/ (una foto por perfume).
+
+PASO 1 — GitHub
+1. Repositorio nuevo (sugerido: web-velora-perfumes).
+2. "uploading an existing file" > arrastrá TODOS los archivos y la carpeta imagenes (descomprimidos) > "Commit changes".
+
+PASO 2 — Cloudflare Pages
+1. Workers & Pages > Create > Pages > "Connect to Git" > elegir el repositorio.
+2. Build command: vacío. Build output directory: / (raíz). Framework: None.
+3. "Save and Deploy".
+
+CONTACTO
+- Solo WhatsApp (5491160468912) e Instagram (https://www.instagram.com/perfumes_velora26). No hay formulario ni mail.
+
+CÓMO FUNCIONA EL PEDIDO
+- El cliente agrega perfumes al pedido y toca "Enviar pedido por WhatsApp": se abre el chat con la lista armada.
+- Los precios se consultan por WhatsApp. Mientras "precio" sea null no se muestra precio.
+
+CAMBIOS FUTUROS (editar en GitHub con el lápiz y guardar: Cloudflare republica solo)
+- Poner precio: en productos.js, cambiar "precio":null por "precio":45000 (sin puntos). Con precio cargado se muestra en la tarjeta y el pedido suma el total (solo si todos los ítems del pedido tienen precio).
+- Sin stock: "disponible":false.
+- Número de WhatsApp o mensaje: arriba de script.js.
+- Para agregar un perfume nuevo: copiar una línea de productos.js, cambiar los datos y subir la foto a imagenes/catalogo/ con el mismo nombre que figura en "imagen".
+
+ANTES DE ENTREGAR
+[ ] Abrir la web en celular y en computadora.
+[ ] Probar un pedido de prueba y el botón de WhatsApp.
+[ ] Revisar nombres y fotos del catálogo (se leyeron automáticamente de los PDFs).
